@@ -1,11 +1,11 @@
 #Базовая модель peewee
 from peewee import *
-from src.Connection.connect import connect
+from src.Connection.connect import *
 
 
 class Base(Model):
     class Meta:
-        database = connect
+        database = database()
 
 
 
