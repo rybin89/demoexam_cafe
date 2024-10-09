@@ -9,13 +9,13 @@
 
 
 from PyQt5 import QtCore, QtGui, QtWidgets
+import sys
 
-
-class Ui_cookWindow(object):
-    def setupUi(self, cookWindow):
-        cookWindow.setObjectName("cookWindow")
-        cookWindow.resize(1457, 752)
-        self.centralwidget = QtWidgets.QWidget(cookWindow)
+class Ui_adminWindow(object):
+    def setupUi(self, adminWindow):
+        adminWindow.setObjectName("cookWindow")
+        adminWindow.resize(1457, 752)
+        self.centralwidget = QtWidgets.QWidget(adminWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.labelTitleWindow = QtWidgets.QLabel(self.centralwidget)
         self.labelTitleWindow.setGeometry(QtCore.QRect(410, 20, 531, 31))
@@ -244,21 +244,21 @@ class Ui_cookWindow(object):
         self.pushButtonReady_11.setStyleSheet("background-color: rgb(13, 103, 0);\n"
 "color: rgb(255, 255, 255);")
         self.pushButtonReady_11.setObjectName("pushButtonReady_11")
-        cookWindow.setCentralWidget(self.centralwidget)
-        self.menubar = QtWidgets.QMenuBar(cookWindow)
+        adminWindow.setCentralWidget(self.centralwidget)
+        self.menubar = QtWidgets.QMenuBar(adminWindow)
         self.menubar.setGeometry(QtCore.QRect(0, 0, 1457, 23))
         self.menubar.setObjectName("menubar")
-        cookWindow.setMenuBar(self.menubar)
-        self.statusbar = QtWidgets.QStatusBar(cookWindow)
+        adminWindow.setMenuBar(self.menubar)
+        self.statusbar = QtWidgets.QStatusBar(adminWindow)
         self.statusbar.setObjectName("statusbar")
-        cookWindow.setStatusBar(self.statusbar)
+        adminWindow.setStatusBar(self.statusbar)
 
-        self.retranslateUi(cookWindow)
-        QtCore.QMetaObject.connectSlotsByName(cookWindow)
+        self.retranslateUi(adminWindow)
+        QtCore.QMetaObject.connectSlotsByName(adminWindow)
 
-    def retranslateUi(self, cookWindow):
+    def retranslateUi(self, adminWindow):
         _translate = QtCore.QCoreApplication.translate
-        cookWindow.setWindowTitle(_translate("cookWindow", "ДОБАВИТЬ ПОЛЬЗОВАТЕЛЯ"))
+        adminWindow.setWindowTitle(_translate("cookWindow", "ДОБАВИТЬ ПОЛЬЗОВАТЕЛЯ"))
         self.labelTitleWindow.setText(_translate("cookWindow", "<html><head/><body><p align=\"center\">Панель Администратора</p></body></html>"))
         self.listOrders.setPlaceholderText(_translate("cookWindow", "логин"))
         self.lablOredrs.setText(_translate("cookWindow", "<html><head/><body><p align=\"center\">Сотрудники</p></body></html>"))
@@ -301,12 +301,21 @@ class Ui_cookWindow(object):
         self.textEdit_8.setPlaceholderText(_translate("cookWindow", "введите первого официанта"))
         self.pushButtonReady_11.setText(_translate("cookWindow", "Добавить смену"))
 
+def main_admin():
+
+    app = QtWidgets.QApplication(sys.argv)
+    adminWindow = QtWidgets.QMainWindow()
+    ui = Ui_adminWindow()
+    ui.setupUi(adminWindow)
+    adminWindow.show()
+    app.exec_()
 
 if __name__ == "__main__":
-    import sys
-    app = QtWidgets.QApplication(sys.argv)
-    cookWindow = QtWidgets.QMainWindow()
-    ui = Ui_cookWindow()
-    ui.setupUi(cookWindow)
-    cookWindow.show()
-    sys.exit(app.exec_())
+    # import sys
+    # app = QtWidgets.QApplication(sys.argv)
+    # adminWindow = QtWidgets.QMainWindow()
+    # ui = Ui_adminWindow()
+    # ui.setupUi(adminWindow)
+    # adminWindow.show()
+    # sys.exit(app.exec_())
+    main_admin()
