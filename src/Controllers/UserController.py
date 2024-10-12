@@ -21,19 +21,24 @@ class UserController():
         Users.update({Users.status : False}).where(Users.id == id_user).execute()
     # метод который выводит id по имени
     # метод КЛАССА
+    def upadate_status_true(self):
+        Users.update({Users.status: True}).execute()
+
     @classmethod
     def show(cls,login):
         return Users.get(Users.login==login)
+#     Вывод списка в зависимости от роли
+    @classmethod
+    def show_user(cls,role_id):
+        return Users.select().where(Users.role_id == role_id)
+    @classmethod
+    def list_user(cls, role_id):
+        list = []
+        for user in UserController.show_user(role_id):
+            list.append(user.login)
+        return list
+
 if __name__ == "__main__":
-    # users = UserController()
-    # print(users.log_in('admin_Ekaterina','111111'))
-    # for row in users.get():
-    #     print(row.login)
-    # # users.add('IVAN', '123456', "Ivanow IVAN", 1)
-    # for row in users.get():
-    #     print(row.id, row.login, row.status)
-    # users.upadate_status(9)
-    # for row in users.get():
-    #     print(row.id, row.login, row.status)
-    # print(users.show('IVAN'))
-    print(UserController.show('cook_Alexandr').role_id)
+    for row in UserController.show_user(3):
+        print(row.login)
+    print(UserController.list_user(3))
